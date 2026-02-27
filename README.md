@@ -1,50 +1,39 @@
-# Welcome to your Expo app 👋
+# 📚 App de Estudos
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile desenvolvido em **React Native com Expo** para ajudar no controle de tempo de estudos, organização das sessões e acompanhamento de progresso.
 
-## Get started
+Este projeto foi criado como um **projeto pessoal de aprendizado**, evoluindo por versões, simulando um projeto real de software.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Funcionalidades
 
-2. Start the app
+### Versão 1.0
+- Cronômetro de estudos
+- Iniciar, pausar e resetar sessão
+- Interface simples e focada
 
-   ```bash
-   npx expo start
-   ```
+### Versão 2.0
+- Histórico de sessões de estudo
+- Organização dos dados em estrutura tipada
+- Persistência local com AsyncStorage
+- Código organizado por camadas (hooks, components, services, types)
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🛠️ Tecnologias Utilizadas
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- React Native
+- Expo
+- TypeScript
+- Expo Router
+- AsyncStorage
+- Git & GitHub
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 📱 Como executar o projeto
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+npx expo start
