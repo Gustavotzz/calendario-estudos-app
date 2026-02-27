@@ -18,6 +18,13 @@ export default function Home() {
       >
         <Text style={styles.statsText}>📊 Ver estatísticas</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.historyButton}
+        onPress={() => router.push('/history')}
+      >
+        <Text style={styles.historyText}>📜 Ver histórico</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -52,6 +59,18 @@ const styles = StyleSheet.create({
   },
   statsText: {
     color: '#60a5fa',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  historyButton: {
+    marginTop: 16,
+    backgroundColor: '#111827',
+    padding: 16,
+    borderRadius: 14,
+    alignItems: 'center',
+  },
+  historyText: {
+    color: '#34d399',
     fontSize: 16,
     fontWeight: '600',
   },

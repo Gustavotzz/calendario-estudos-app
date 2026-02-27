@@ -1,81 +1,81 @@
-import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useStudyTimer } from '../hooks/useStudyTimer';
-import { saveStudyTime } from '../services/studyStorage';
 
 export function StudyTimer() {
-  const { seconds, start, stop, reset } = useStudyTimer();
+  const {
+    seconds,
+    isRunning,
+    start,
+    stop,
+    reset,
+    finishStudy,
+  } = useStudyTimer();
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
-  async function handleStop() {
-    stop();
-
-    if (seconds > 0) {
-      await saveStudyTime(seconds);
-    }
-  }
-
-  async function handleReset() {
-    if (seconds > 0) {
-      await saveStudyTime(seconds);
-    }
-    reset();
-  }
-
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.time}>
-        {minutes.toString().padStart(2, '0')}:
-        {remainingSeconds.toString().padStart(2, '0')}
+        {minutes}:{String(remainingSeconds).padStart(2, '0')}
       </Text>
 
-      <TouchableOpacity style={styles.button} onPress={start}>
-        <Text style={styles.buttonText}>▶ Estudar</Text>
+      {!isRunning ? (
+        <TouchableOpacity style={styles.button} onPress={start}>
+          <Text style={styles.buttonText}>▶️ Iniciar</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.button} onPress={stop}>
+          <Text style={styles.buttonText}>⏸ Pausar</Text>
+        </TouchableOpacity>
+      )}
+
+      <TouchableOpacity
+        style={styles.finishButton}
+        onPress={() => finishStudy('Estudo Geral')}
+      >
+        <Text style={styles.finishText}>✅ Finalizar estudo</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={handleStop}>
-        <Text style={styles.buttonText}>⏸ Pausar</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-        <Text style={styles.resetText}>⟲ Finalizar sessão</Text>
+      <TouchableOpacity onPress={reset}>
+        <Text style={styles.reset}>🔄 Resetar</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    marginTop: 40,
-  },
   time: {
-    fontSize: 48,
-    fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 30,
+    fontSize: 40,
+    textAlign: 'center',
+    marginBottom: 20,
   },
   button: {
     backgroundColor: '#2563eb',
-    paddingVertical: 14,
-    paddingHorizontal: 40,
+    padding: 14,
     borderRadius: 10,
-    marginBottom: 12,
-    width: 220,
     alignItems: 'center',
+    marginBottom: 10,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
     fontWeight: '600',
   },
-  resetButton: {
+  finishButton: {
+    backgroundColor: '#16a34a',
+    padding: 14,
+    borderRadius: 10,
+    alignItems: 'center',
     marginTop: 10,
   },
-  resetText: {
+  finishText: {
+    color: '#fff',
+    fontWeight: '600',
+  },
+  reset: {
     color: '#9ca3af',
-    fontSize: 14,
+    marginTop: 10,
+    textAlign: 'center',
   },
 });
